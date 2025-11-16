@@ -11,12 +11,6 @@
         {
             "deviceId": "T1LH47R1186170",
             "name": "com.DefaultCompany.QuirkWithG",
-            "processId": 17228,
-            "exited": true
-        },
-        {
-            "deviceId": "T1LH47R1186170",
-            "name": "com.DefaultCompany.QuirkWithG",
             "processId": 18620,
             "exited": true
         },
@@ -36,6 +30,30 @@
             "deviceId": "T1LH47R1186170",
             "name": "com.xreal.evapro.nebula",
             "processId": 22236,
+            "exited": true
+        },
+        {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.xreal.evapro.camera",
+            "processId": 25942,
+            "exited": false
+        },
+        {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.xreal.evapro.nebula:space",
+            "processId": 28210,
+            "exited": true
+        },
+        {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.xreal.evapro.nebula",
+            "processId": 26469,
+            "exited": false
+        },
+        {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.DefaultCompany.QuirkWithG",
+            "processId": 31856,
             "exited": false
         },
         {

@@ -11,6 +11,13 @@ public class GhostSpawner : MonoBehaviour
     public float spawnDistance = 3f;
     private float timer;
 
+    private Quaternion spawnDir;
+
+    void Start()
+    {
+        spawnDir =  playerMainCamera.transform.rotation;
+    }
+
     void Update()
     {
         if (!gameObject.activeSelf) return; // (optional safeguard)
@@ -26,16 +33,13 @@ public class GhostSpawner : MonoBehaviour
 
     public void SpawnGhost()
     {
-        float halfArc = 60;
-        float randomAngle = Random.Range(-halfArc, halfArc);
+        float halfArc = 45f;
+        float randomAngle = Random.Range(-halfArc + spawnDir.eulerAngles.y, halfArc + spawnDir.eulerAngles.y);
 
         Quaternion arcRotation = Quaternion.Euler(0f, randomAngle, 0f);
-        Vector3 spawnDir = arcRotation * playerMainCamera.forward;
-        Vector3 spawnPos = playerMainCamera.position + spawnDir * spawnDistance;
-
+        Vector3 spawnPos = playerMainCamera.position + arcRotation * Vector3.forward * spawnDistance;
         Ghost ghost = ghostPool.Pool.Get();
         ghost.transform.position = spawnPos;
-        ghost.transform.rotation = Quaternion.LookRotation(playerMainCamera.position - spawnPos);
         ghost.targetObj = playerMainCamera.gameObject;
         ghost.loseUIManager = loseUIManager;
     }

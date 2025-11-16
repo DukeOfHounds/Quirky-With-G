@@ -457,7 +457,7 @@
       "url": "https://packages.unity.com"
     },
     "com.xreal.xr": {
-      "version": "file:/Users/dukeofhounds/Downloads/com.xreal.xr.tar.gz",
+      "version": "file:/Users/ianmorrill/Downloads/com.xreal.xr.tar.gz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {

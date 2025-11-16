@@ -27,6 +27,18 @@
             "exited": false
         },
         {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.DefaultCompany.QuirkWithG",
+            "processId": 31030,
+            "exited": true
+        },
+        {
+            "deviceId": "T1LH47R1186170",
+            "name": "com.xreal.evapro.nebula",
+            "processId": 22236,
+            "exited": false
+        },
+        {
             "deviceId": "192.168.137.220:42735",
             "name": "com.DefaultCompany.QuirkWithG",
             "processId": 22112,

@@ -1,22 +1,20 @@
 using UnityEngine;
-
+using UnityEngine.Pool;
 public class GhostSpawner : MonoBehaviour
 {
-    [Header("References")]
-    public GhostPool ghostPool;            // assign in Inspector
-    [SerializeField] 
-    private Transform playerMainCamera;    // the playerMainCamera transform
+    public GhostPool ghostPool;
+    public Transform playerMainCamera;
     
+    public LoseUIManager loseUIManager;
 
-
-    [Header("Spawn Settings")]
     public float spawnInterval = 15f;
-    public float spawnDistance = 3f;  // distance in front of the playerMainCamera
-
+    public float spawnDistance = 3f;
     private float timer;
 
     void Update()
     {
+        if (!gameObject.activeSelf) return; // (optional safeguard)
+
         timer -= Time.deltaTime;
 
         if (timer <= 0f)
@@ -28,13 +26,17 @@ public class GhostSpawner : MonoBehaviour
 
     public void SpawnGhost()
     {
-        // Compute position in front of the playerMainCamera
-        Vector3 spawnPos = playerMainCamera.position + playerMainCamera.forward * spawnDistance;
+        float halfArc = 60;
+        float randomAngle = Random.Range(-halfArc, halfArc);
+
+        Quaternion arcRotation = Quaternion.Euler(0f, randomAngle, 0f);
+        Vector3 spawnDir = arcRotation * playerMainCamera.forward;
+        Vector3 spawnPos = playerMainCamera.position + spawnDir * spawnDistance;
 
         Ghost ghost = ghostPool.Pool.Get();
         ghost.transform.position = spawnPos;
-        ghost.transform.rotation = Quaternion.LookRotation(playerMainCamera.forward);
-   
-        ghost.targetObj= playerMainCamera.gameObject;
+        ghost.transform.rotation = Quaternion.LookRotation(playerMainCamera.position - spawnPos);
+        ghost.targetObj = playerMainCamera.gameObject;
+        ghost.loseUIManager = loseUIManager;
     }
 }

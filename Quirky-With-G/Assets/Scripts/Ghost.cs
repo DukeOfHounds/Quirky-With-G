@@ -8,6 +8,7 @@ public class Ghost : MonoBehaviour
     public float speedUpFactor = 0.01f;
     public float speedRadius = 0.5f;
 
+    public LoseUIManager loseUIManager;
     private IObjectPool<Ghost> pool;
 
     public void Init(IObjectPool<Ghost> poolRef, GameObject target)
@@ -25,12 +26,16 @@ public class Ghost : MonoBehaviour
     {
         // Logic for when the ghost encounters the player
         Despawn();
+        Debug.Log("Ghost has killed the player, GAME OVER");
+        loseUIManager.ShowLoseScreen();
+
     }
 
     public void Death()
     {
         // Logic for when the ghost dies
         Despawn();
+        Debug.Log("Ghost has been killed by the player.");
     }
 
 
